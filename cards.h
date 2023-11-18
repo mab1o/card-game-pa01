@@ -1,8 +1,37 @@
 // cards.h
-// Author: Your name
-// All class declarations go here
+// Author: Margaux Blondel
 
 #ifndef CARDS_H
 #define CARDS_H
+
+#include <string>
+
+
+class Card{
+public:
+    Card(char character, std::string number);
+    Card(Card* c); 
+    ~Card();
+
+    //operators
+    bool operator==(Card c) const;
+    bool operator<(Card c) const;
+    bool operator>(Card c) const;
+
+    //print functions
+    void printControl() const;
+    void print() const;
+
+private:
+    // attributes
+    const int character;
+    const int number;
+
+    // conversions of the attributes
+    int characterToInt(char character) const;
+    char intToCharacter(int character) const;
+    int numberToInt(std::string number) const;
+    std::string intToNumber(int number) const;
+};
 
 #endif
