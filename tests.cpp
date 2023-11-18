@@ -6,7 +6,7 @@
 #include <fstream>
 #include <cstring>
 #include "cards.h"
-#include "cardsbst.h"
+#include "utility.h"
 
 using namespace std;
 
@@ -46,6 +46,11 @@ int main(int argv, char** argc){
     cout << endl << "Create a copie : ";
     Card f(e);
     f.printControl();
+    cout << endl << "Create a copie : ";
+    Card g=f;
+    g.printControl();
+    g=e;
+    g.printControl();
     
     // operators cards
     
@@ -69,7 +74,7 @@ int main(int argv, char** argc){
     cout << endl << "c a > c a ?    : " ;
     cout << (a > a) << " (except false)";
     
-    // =
+    // ==
     cout << endl << "c 10 == c a ?  : " ;
     cout << (c == a) << " (except false)";
 
@@ -119,7 +124,46 @@ int main(int argv, char** argc){
         cout << " | ";
     }
 
+    cout << endl << "Values order : " ;
+    for (int i=1; i<5; i++){
+        tree.cardInPosition(i).print();
+        cout << " | ";
+    }
+
+    cout << endl << "Values rever : " ;
+    for (int i=1; i<5; i++){
+        tree.cardInPositionReverse(i).print();
+        cout << " | ";
+    }
+
+    // contain
+    cout << endl << "contain h 10 ? : " << tree.contains(Card('h',"10"));
+    cout << endl << "contain h k ?  : " << tree.contains(Card('h',"k"));
+    cout << endl << "remove c a, Inorder  : ";
+    tree.remove(a);
+    tree.printInOrder();
+    cout << endl << "remove c 10, Inorder : ";
+    tree.remove(b);
+    tree.printInOrder();
+    cout << endl << "remove h 10, Inorder : ";
+    tree.remove(c);
+    tree.printInOrder();
+    cout << endl << "contain h 10 ? : " << tree.contains(Card('h',"10"));
+
     cout << endl << "-------------END-CARDBST------------" << endl;
+
+    cout << endl << "---------------UTILITY--------------";
+    
+    // test getCard
+    string astr = "h 10";
+    cout << endl << "Read string : h 10";
+    cout << endl << "Create card : ";
+    getCard(astr).print();
+    string bstr = "s q";
+    cout << endl << "Read string : s q";
+    cout << endl << "Create card : ";
+    getCard(bstr).print();
+    cout << endl << "-------------END-UTILITY------------" << endl;
 
     cout << endl << "-------------END-TESTS--------------" << endl;
 

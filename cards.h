@@ -17,6 +17,7 @@ public:
     bool operator==(Card c) const;
     bool operator<(Card c) const;
     bool operator>(Card c) const;
+    Card operator=(Card c);
 
     //print functions
     void printControl() const;
@@ -24,8 +25,8 @@ public:
 
 private:
     // attributes
-    const int character;
-    const int number;
+    int character;
+    int number;
 
     // conversions of the attributes
     int characterToInt(char character) const;

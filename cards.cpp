@@ -24,22 +24,26 @@ Card::~Card(){
 }
 
 // operators
+Card Card::operator=(Card c) {
+    return Card(intToCharacter(c.character), intToNumber(c.number));
+}
+
 bool Card::operator==(Card c) const{
     return (number == c.number && character == c.character);
 }
 
 bool Card::operator<(Card c) const{
-    if (number == c.number){
-        return (character < c.character);
+    if (character == c.character){
+        return (number < c.number);
     }
-    return number < c.number;
+    return character < c.character;
 }
 
 bool Card::operator>(Card c) const{
-    if (number == c.number){
-        return (character > c.character);
+    if (character == c.character){
+        return (number > c.number);
     }
-    return number > c.number;
+    return character > c.character;
 }
 
 // conversions of the attributes
@@ -82,3 +86,5 @@ void Card::print() const{
     string strNumber = intToNumber(this->number);
     cout << strCharatere << " " << strNumber;
 }
+
+
